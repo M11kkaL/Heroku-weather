@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './apicall.css';
-// import './weather-icons/css/weather-icons.css';
 
 class Apicall extends Component {
 
@@ -32,7 +31,7 @@ class Apicall extends Component {
         getCity = async (cityName) => {
         let city = cityName;
         const key = 'jXqfArLCGptpT6p8rU9uumrBUIwkZxt2';
-        const url = 'http://dataservice.accuweather.com/locations/v1/cities/search';
+        const url = 'https://dataservice.accuweather.com/locations/v1/cities/search';
         const query = `?apikey=${key}&q=${city}`;
         
         const response = await fetch(url + query);
@@ -43,7 +42,7 @@ class Apicall extends Component {
         getWeather = async (locationId) => {
         
         const key = 'jXqfArLCGptpT6p8rU9uumrBUIwkZxt2';
-        const url = 'http://dataservice.accuweather.com/currentconditions/v1/';
+        const url = 'https://dataservice.accuweather.com/currentconditions/v1/';
         const query = `${locationId}?apikey=${key}`;
     
         const response = await fetch(url + query);
