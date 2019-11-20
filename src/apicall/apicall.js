@@ -1,5 +1,42 @@
 import React, {Component} from 'react';
 import './apicall.css';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+// import TextField from '@material-ui/core/TextField';
+
+
+const useStyles = makeStyles(theme => ({
+    button: {
+        margin: theme.spacing(1),
+        background: 'white',
+        // border: 0,
+        borderRadius: 3,
+        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+        color: 'black',
+        height: 68,
+        padding: '0 30px',
+        width: 200,
+        border: '1px solid black'
+    },
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+  }));
+  
+    function ContainedButtons() {
+    const classes = useStyles();
+  
+    return (
+        <div>
+      <Button type='submit' 
+            variant="contained" 
+            className={classes.button}
+            >
+        Check weather
+      </Button>
+      </div>
+    );}
 
 class Apicall extends Component {
 
@@ -12,7 +49,7 @@ class Apicall extends Component {
             isDayTime: '',
             notFound: '',
             valueAttr: '',
-            backgroundImage: `url(${require('../img/sunset.png')})`,
+            backgroundImage: `url(${require('../img/background.png')})`,
         }
 
         handleChange = (e) => {
@@ -93,7 +130,7 @@ class Apicall extends Component {
         return (
             <div className='container' style ={{
                 backgroundImage: this.state.backgroundImage,
-                height: 'auto',width:'100%'
+                height: 'auto',width:'100%', 
             }}>
             <div className='weather-container' >
                 <div className='city'>
@@ -110,10 +147,16 @@ class Apicall extends Component {
                     </div>
             </div>
             <div className='input-box'>
-            <form onSubmit={this.handleSubmit}>
-            <input type="text" placeholder='Enter city' value={this.state.valueAttr} onChange={this.handleChange} />
+            <form onSubmit={this.handleSubmit} 
+            onChange={this.handleChange} 
+            value={this.state.valueAttr} >
             <div>
-            <button>Check weather</button>
+            </div>
+            {/* <form onSubmit={this.handleSubmit}> */}
+            <input type="text" placeholder='Enter city' value={this.state.valueAttr} onChange={this.handleChange} />
+           
+            <div>
+            <ContainedButtons />
             </div>
             </form>
             </div>
